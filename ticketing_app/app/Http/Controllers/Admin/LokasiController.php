@@ -29,17 +29,17 @@ class LokasiController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        $validatedData = $request->validate([
-            'nama_lokasi' => 'required|string|max:255',
-            'alamat'      => 'required|string',
-        ]);
+{
+    $validated = $request->validate([
+        'nama_lokasi' => 'required|string|max:255',
+        'aktif' => 'required|in:Y,N',
+    ]);
 
-        Lokasi::create($validatedData);
+    Lokasi::create($validated);
 
-        return redirect()->route('admin.lokasi.index')
-            ->with('success', 'Lokasi berhasil ditambahkan.');
-    }
+    return redirect()->route('admin.lokasi.index')->with('success', 'Lokasi berhasil ditambahkan.');
+}
+
 
     /**
      * Display the specified resource.
@@ -62,26 +62,17 @@ class LokasiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        try {
-            $lokasi = Lokasi::findOrFail($id);
+    public function update(Request $request, Lokasi $lokasi)
+{
+    $validated = $request->validate([
+        'nama_lokasi' => 'required|string|max:255',
+        'aktif' => 'required|in:Y,N',
+    ]);
 
-            $validatedData = $request->validate([
-                'nama_lokasi' => 'required|string|max:255',
-                'alamat'      => 'required|string',
-            ]);
+    $lokasi->update($validated);
 
-            $lokasi->update($validatedData);
-
-            return redirect()->route('admin.lokasi.index')
-                ->with('success', 'Lokasi berhasil diperbarui.');
-        } catch (\Exception $e) {
-            return redirect()->back()
-                ->withErrors(['error' => 'Terjadi kesalahan: ' . $e->getMessage()]);
-        }
-    }
-
+    return redirect()->route('admin.lokasi.index')->with('success', 'Lokasi berhasil diperbarui.');
+}
     /**
      * Remove the specified resource from storage.
      */
