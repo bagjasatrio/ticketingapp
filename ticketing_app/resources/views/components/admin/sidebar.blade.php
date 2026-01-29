@@ -51,6 +51,20 @@
 	</a>
 </li>
 
+         <!-- Lokasi item -->
+         <li class="{{ request()->routeIs('admin.lokasi.*') ? 'bg-gray-200 rounded-lg' : '' }}">
+    <a href="{{ route('admin.lokasi.index') }}"
+       class="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+       data-tip="Lokasi">
+        <!-- icon Lokasi -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path fill="currentColor"
+                d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7m0 9.5a2.5 2.5 0 1 1 0-5a2.5 2.5 0 0 1 0 5" />
+        </svg>
+        <span class="is-drawer-close:hidden">Manajemen Lokasi</span>
+    </a>
+</li>
+
         <!-- logout -->
         <div class="w-full p-4">
             <form action="{{ route('logout') }}" method="POST">
@@ -64,5 +78,6 @@
                 </button>
             </form>
         </div>
+
     </div>
 </div>

@@ -37,4 +37,9 @@ class Event extends Model
     {
         return $this->belongsTo(User::class);
     }
+    
+    public function lokasi_relasi()
+{
+    return $this->belongsTo(Lokasi::class, 'lokasi_id');
+}
 }

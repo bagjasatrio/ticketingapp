@@ -16,13 +16,14 @@ class UserSeeder extends Seeder
                 'email' => 'admin@gmail.com',
                 'password' => bcrypt('password'),
                 'role' => 'admin',
+                'email_verified_at' => now(),
             ],
             [
                 'name' => 'Regular User',
                 'email' => 'user@gmail.com',
                 'password' => bcrypt('password'),
-                'no_hp' => '081234567890',
                 'role' => 'user',
+                'email_verified_at' => now(),
             ]
         ];
 
